@@ -1,0 +1,19 @@
+---
+- name: Create Users & Groups
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: Create group
+      group:
+        name: student
+        state: present
+
+    - name: Create Users Task
+      user:
+        name: student
+        state: present
+        password: "{{ 'password' | password_hash('sha512','A512') }}"
+        shell: /bin/sh
+        group: student
+      loop:
+        - student
