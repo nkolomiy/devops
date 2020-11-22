@@ -24,7 +24,7 @@ pipeline {
        stage('Test') {
            agent {
                docker {
-                   image 'golang-nkolomiy'
+                   image 'golang'
                }
            }
            steps {
