@@ -1,8 +1,0 @@
-# install soft
-ansible-playbook soft.yml
-# add user, group and password
-ansible-playbook users.yml
-#create directory structure
-ansible all -m file -a "path=/home/student/test1 state=directory, path=/home/student/test1/test2 state=directory, path=/home/student/test1/test2/test3 state=directory"
-# gather some info
-ansible all -m setup -a 'gather_subset=!all,!any,network,virtual'
