@@ -31,10 +31,12 @@ pipeline {
        stage('Deploy App') {
            steps {
              script {
-                 sh "kubect get pods"
-                 sh "kubectl apply -f deployment.yml"
-                 sh "kubectl apply -f service.yml"
-                 sh "kubect get pods"
+                 sh '''
+                    ssh ctl && kubect get pods \
+                    && kubectl apply -f deployment.yml \
+                    && kubectl apply -f service.yml \
+                    && kubect get pods
+                 '''
              }
            }
        }
