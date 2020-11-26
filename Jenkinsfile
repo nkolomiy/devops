@@ -2,25 +2,18 @@ pipeline {
    agent any
    environment {
        registry = "nkolomiy/test-levelp"
-       GOCACHE = "/tmp"
    }
    stages {
-       stage('Build') {
-           agent {
-               docker {
-                   image 'golang'
-               }
-           }
+       stage('SCM checkout') {
            steps {
-               // Create our project directory.
-               sh 'cd ${GOPATH}/src'
-               sh 'mkdir -p ${GOPATH}/src/hello-world'
-               // Copy all files in our Jenkins workspace to our project directory.
-               sh 'cp -r ${WORKSPACE}/* ${GOPATH}/src/hello-world'
-               // Build the app.
-               sh 'go build'
+               git url: 'https://github.com/bzdgn/docker-spring-boot-java-web-service-example',branch: 'master'
            }
        }
+       stage("Maven Clean Package"){
+           steps {
+              sh "mvn clean install"
+           }
+       } 
        stage('Publish') {
            environment {
                registryCredential = 'dockerhub'
@@ -38,7 +31,10 @@ pipeline {
        stage('Deploy App') {
            steps {
              script {
-                 kubernetesDeploy(configs: "deployment.yml", kubeconfigId: "kubeconfig")
+                 sh "kubect get pods"
+                 sh "kubectl apply -f deployment.yml"
+                 sh "kubectl apply -f service.yml"
+                 sh "kubect get pods"
              }
            }
        }

@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-deployment
+  name: hello-deployment-new
   labels:
     role: app
 spec:
@@ -16,7 +16,7 @@ spec:
         role: app
     spec:
       containers:
-        - name: app
+        - name: app-new
           image: nkolomiy/test-levelp:latest
           resources:
             requests:
