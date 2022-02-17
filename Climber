@@ -4,7 +4,7 @@ public class Climber {
     private String fullName;
     private int age;
     private String email;
-    
+
     public String getFullName() {
         return fullName;
     }
@@ -36,5 +36,14 @@ public class Climber {
             throw new IllegalArgumentException("Это не email");
         }
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Climber{" +
+                "fullName='" + fullName + '\'' +
+                ", age=" + age +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
