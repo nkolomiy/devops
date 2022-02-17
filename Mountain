@@ -3,7 +3,7 @@ package lesson4;
 public class Mountain {
     private String name;
     private int height;
-    
+
     public Mountain(String name, int height) {
         setName(name);
         setHeight(height);
@@ -29,5 +29,13 @@ public class Mountain {
             throw new IllegalArgumentException("Это не гора");
         }
         this.height = height;
+    }
+
+    @Override
+    public String toString() {
+        return "Mountain{" +
+                "name='" + name + '\'' +
+                ", height=" + height +
+                '}';
     }
 }
