@@ -1,0 +1,33 @@
+package lesson4;
+
+public class Mountain {
+    private String name;
+    private int height;
+    
+    public Mountain(String name, int height) {
+        setName(name);
+        setHeight(height);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        if (name.isEmpty() || name.trim().length() < 3) {
+            throw new IllegalArgumentException("Значение full < 3");
+        }
+        this.name = name;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        if (height < 100 ) {
+            throw new IllegalArgumentException("Это не гора");
+        }
+        this.height = height;
+    }
+}
