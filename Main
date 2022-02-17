@@ -1,0 +1,16 @@
+package lesson4;
+
+public class Main {
+    public static void main(String[] args) {
+        Climber climber = new Climber();
+        climber.setAge(12);
+        climber.setEmail("bla@bla.ru");
+        climber.setFullName("Ivan");
+
+        Mountain everest = new Mountain("Everest",8848);
+
+        ClimberingGroup climberingGroup = new ClimberingGroup(everest,2);
+        climberingGroup.addClimber(climber);
+        System.out.println(climberingGroup);
+    }
+}
