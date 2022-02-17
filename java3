@@ -1,0 +1,20 @@
+package lesson4;
+
+public class ClimberingGroup {
+    private Climber[] climbers;
+    private Mountain mountain;
+
+    public ClimberingGroup(Mountain mountain, int climberCount) {
+        this.climbers = new Climber[climberCount];
+        this.mountain = mountain;
+    }
+    public void addClimber(Climber climber) {
+        for (int i = 0; i < climbers.length; i++) {
+            if (climbers[i] == null) {
+                climbers[i] = climber;
+                return;
+            }
+        }
+        System.out.println("Мест больше нет");
+    }
+}
